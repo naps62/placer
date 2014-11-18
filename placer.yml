@@ -1,0 +1,11 @@
+# skype => {
+#   regex => "Skype",
+#   desktop => 0,
+#   screen => 0,
+#   position => "300,300,500,500",
+#   # position => "fullscreen",
+# }
+firefox => {
+  cmd => "firefox-aurora",
+  regex => "Firefox",
+}
