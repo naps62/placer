@@ -27,9 +27,8 @@ sub move_window_to_desktop {
 sub open_program {
   print @_, "\n";
   my ($cmd) = @_;
-  # `$cmd 2> /dev/null`;
-  `firefox-aurora &`;
-  print "opened";
+  system("$cmd & 2>&1 > /dev/null");
+  print "opened\n";
 }
 
 sub window_exists {
@@ -49,20 +48,25 @@ sub wait_for_window {
 sub place_window {
   print "place_window\n";
   my ($window, $screen, $position) = @_;
-  if ($position =~ /fullscreen/) {
-    `wmctrl -r "$window" -b add,fullscreen`;
-  } elsif (!($position =~ /default/)) {
-    `wmctrl -r "$window" -b remove,fullscreen`;
-  }
+  `wmctrl -r "$window" -b remove,fullscreen`;
 
   # offset x position according to screen
   # sum up width of all previous screens
-  my @coords = split(',', $position);
+  my $coords_str = $position;
+  if ($coords_str =~ /fullscreen/) {
+    $coords_str = "0,0,0,0";
+  }
+  my @coords = split(',', $coords_str);
   for(0 .. $screen-1) {
     $coords[0] += $resolutions[$_]
   }
-  $position = join(',', @coords);
-  `wmctrl -r "$window" -e 0,$position`;
+  $coords_str = join(',', @coords);
+  `wmctrl -r "$window" -e 0,$coords_str`;
+  print "$window $position\n";
+
+  if ($position =~ /fullscreen/) {
+    `wmctrl -r "$window" -b add,fullscreen`;
+  }
 }
 
 sub run {
@@ -76,7 +80,7 @@ sub run {
     print "window already exists\n";
     move_window_to_desktop($cmd, $desktop);
   }
-  place_window($cmd, $screen, $position);
+  place_window($regex, $screen, $position);
 }
 
 # run("skype", "Skype", 0, "0,300,300,300");

@@ -1,11 +1,31 @@
-# skype => {
-#   regex => "Skype",
-#   desktop => 0,
-#   screen => 0,
-#   position => "300,300,500,500",
-#   # position => "fullscreen",
-# }
+uxterm => {
+  desktop => 0,
+  screen => 0,
+  position => "fullscreen",
+},
 firefox => {
   cmd => "firefox-aurora",
   regex => "Firefox",
-}
+  desktop => 0,
+  screen => 1,
+  position => "fullscreen",
+},
+# spotify => {
+#   cmd => "spotify",
+#   regex => "Spotify",
+#   desktop => 1,
+#   screen => 0,
+#   position => "0,0,1920,1080",
+# },
+# skype => {
+#   regex => "Skype",
+#   desktop => 1,
+#   screen => 1,
+#   position => "960,0,500,800",
+# },
+# deluge => {
+#   regex => "Deluge",
+#   desktop => 2,
+#   screen => 1,
+#   position => "fullscreen",
+# }
