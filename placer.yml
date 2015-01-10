@@ -3,13 +3,6 @@ uxterm => {
   screen => 0,
   position => "fullscreen",
 },
-firefox => {
-  cmd => "firefox-aurora",
-  regex => "Firefox",
-  desktop => 0,
-  screen => 1,
-  position => "fullscreen",
-},
 # spotify => {
 #   cmd => "spotify",
 #   regex => "Spotify",
@@ -29,3 +22,7 @@ firefox => {
 #   screen => 1,
 #   position => "fullscreen",
 # }
+chrome => {
+  cmd => "google-chrome-stable",
+  regex => "Google Chrome",
+}
