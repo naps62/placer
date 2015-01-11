@@ -1,0 +1,15 @@
+chrome => {
+  cmd => "google-chrome-stable",
+  regex => "Google Chrome",
+},
+uxterm => {
+  desktop => 0,
+  screen => 0,
+  position => "fullscreen",
+},
+skype => {
+  regex => "Skype",
+  desktop => 1,
+  screen => 1,
+  position => "960,0,500,800",
+}

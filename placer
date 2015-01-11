@@ -86,9 +86,7 @@ sub run {
   place_window($regex, $screen, $position);
 }
 
-# run("skype", "Skype", 0, "0,300,300,300");
-
-my %config = do 'placer.yml';
+my %config = do $ARGV[0];
 my ($app, $args, $subkey, $subvalue);
 while (($app, $args) = each %config) {
   my ($cmd, $regex, $desktop, $screen, $position);
